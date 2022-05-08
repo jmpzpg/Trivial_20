@@ -1,0 +1,44 @@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th class="centrado">Respuesta 1</th>
+                <th class="centrado">Respuesta 2</th>
+                <th class="centrado">Respuesta 3</th>
+                <th class="centrado">Respuesta 4</th>   
+            </tr>
+        </thead>
+        <tbody>  
+            {{respuestas_a_pregunta}}
+            <p>consulta de preguntas</p>
+            {{preguntas}}
+            <p>consulta de id de preguntas</p>
+            {{id_preguntas}}
+            <p>consulta de pregunta y de respuestas asociadas</p>
+            {{dic_p_r}}
+            <p>Ahora las preguntas, con el texto e ID solamente</p>
+            {{preguntas_texto_e_id}}
+            <p>Respuestas, solo texto e ID:</p>
+            {{respuestas_para_pregunta}}
+            <tr>
+                {% for r in respuestas_a_pregunta %}
+                <td class="centrado">
+                    <a href="seleccionar_respuesta/{{p.id}}/{{r.id}}" class="btn btn-sm btn-block btn-info"> {{ r }}</a>
+                </td>
+                {% endfor %}
+
+            </tr> 
+            <tr><td>Ahora vienen los buenos:</td></tr>  
+            <tr>
+               
+                    
+                {% for tuplaint in lista %}
+                    <td class="centrado">
+                        <a href="seleccionar_respuesta/{{tupla.1}}/{{tuplaint.1}}" class="btn btn-sm btn-block btn-info"> {{ tuplaint.0 }}</a>
+                    </td>
+                {% endfor %}
+                   
+            </tr>    
+        </tbody>
+    </table>
+</div>         

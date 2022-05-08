@@ -1,0 +1,91 @@
+<head>
+    {% load static %}
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" /> 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts (Ubuntu) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="{% static 'css/trivial.css' %}" />
+</head>
+<body>
+
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>Juega a nuestro Trivial y contesta a este bloque de 10 preguntas:</h2>
+                
+                <p>AHORA EL SIGUIENTE</p>
+
+                {% for preg_id, dic in respuestas_para_pregunta.items %}  
+                {% for preg_txt, resp_lista_tuplas in dic.items %}             
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card border-info mb-3" >
+                            <div class="card-header">Pregunta número {{forloop.counter}}</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Temática: {{preg.tematica}}</h5>
+                                
+                                <a href="seleccionar_respuesta/{{preg_id}}/" class="btn btn-sm btn-block btn-outline-success"> {{preg_txt}}</a>
+                            </div>
+                        </div>
+
+                    
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="centrado">Respuesta 1</th>
+                                        <th class="centrado">Respuesta 2</th>
+                                        <th class="centrado">Respuesta 3</th>
+                                        <th class="centrado">Respuesta 4</th>   
+                                    </tr>
+                                </thead>
+                                <tbody>  
+                                    {{respuestas_a_pregunta}}
+                                    <p>consulta de preguntas</p>
+                                    {{preguntas}}
+                                    <p>consulta de id de preguntas</p>
+                                    {{id_preguntas}}
+                                    <p>consulta de pregunta y de respuestas asociadas</p>
+                                    {{dic_p_r}}
+                                    <p>Ahora las preguntas, con el texto e ID solamente</p>
+                                    {{preguntas_texto_e_id}}
+                                    <p>Respuestas, solo texto e ID:</p>
+                                    {{respuestas_para_pregunta}}
+                                     
+                                    <tr>
+                                       
+                                            
+                                        {% for tupla in resp_lista_tuplas %}
+                                            
+                                            <td class="centrado">
+                                                <a href="seleccionar_respuesta/{{preg_id}}/{{tupla.0}}" class="btn btn-sm btn-block btn-info"> {{ tupla.1 }}</a>      
+                                            </td>
+                                            
+                                        {% endfor %}
+                                           
+                                    </tr>    
+                                </tbody>
+                            </table>
+                        </div>         
+                                    
+                        <div>
+                                
+                            <p>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </p>
+                            
+                        </div>  
+                    </div>
+                </div> 
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</body>
