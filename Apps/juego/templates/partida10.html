@@ -20,7 +20,7 @@
                 
                 <p>AHORA EL SIGUIENTE</p>
 
-                {% for preg_id, dic in respuestas_para_pregunta.items %}  
+                {% for preg_id, dic in preguntas_selecc_aleat_con_sus_respuestas.items %}  
                 {% for preg_txt, resp_lista_tuplas in dic.items %}             
                 <div class="card">
                     <div class="card-body">
@@ -54,8 +54,10 @@
                                     {{dic_p_r}}
                                     <p>Ahora las preguntas, con el texto e ID solamente</p>
                                     {{preguntas_texto_e_id}}
-                                    <p>Respuestas, solo texto e ID:</p>
-                                    {{respuestas_para_pregunta}}
+                                    <p>preguntas_selecc_aleat_con_sus_respuestas:</p>
+                                    {{preguntas_selecc_aleat_con_sus_respuestas}}
+                                    <p> *******</p>
+                                    {{preg_alea}}
                                      
                                     <tr>
                                        

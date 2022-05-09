@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.html import format_html
 from .seleccionar import sexos
+#from seleccionar import sexos
 
 # Create your models here.
 
